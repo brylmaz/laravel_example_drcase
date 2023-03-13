@@ -21,3 +21,7 @@ Route::get('/redis', function () {
     Redis::set('name',"baris");
     return Redis::get('name');
 });
+
+Route::get('/rabbit', function () {
+    \App\Jobs\Testrabbit::dispatch("a@a.com");
+});

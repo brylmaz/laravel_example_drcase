@@ -62,10 +62,11 @@ services:
 
     rabbitmq3:
         image: rabbitmq:3-management-alpine
-        container_name: 'rabbitmq'
+        container_name: 'rabbitmq3'
+        command: sh -c "rabbitmq-plugins enable rabbitmq_management; rabbitmq-server"
         ports:
-            - 5672:5672
-            - 15672:15672
+            - "5672:5672"
+            - "15672:15672"
         environment:
             - RABBITMQ_DEFAULT_USER=${RABBITMQ_USER}
             - RABBITMQ_DEFAULT_PASS=${RABBITMQ_PASSWORD}
