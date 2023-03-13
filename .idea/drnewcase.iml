@@ -31,7 +31,6 @@
       <excludeFolder url="file://$MODULE_DIR$/src/vendor/nesbot/carbon" />
       <excludeFolder url="file://$MODULE_DIR$/src/vendor/ralouphie/getallheaders" />
       <excludeFolder url="file://$MODULE_DIR$/src/vendor/graham-campbell/result-type" />
-      <excludeFolder url="file://$MODULE_DIR$/src/vendor/guzzlehttp/uri-template" />
       <excludeFolder url="file://$MODULE_DIR$/src/vendor/guzzlehttp/psr7" />
       <excludeFolder url="file://$MODULE_DIR$/src/vendor/guzzlehttp/guzzle" />
       <excludeFolder url="file://$MODULE_DIR$/src/vendor/guzzlehttp/promises" />
@@ -120,6 +119,11 @@
       <excludeFolder url="file://$MODULE_DIR$/src/vendor/ramsey/collection" />
       <excludeFolder url="file://$MODULE_DIR$/src/vendor/ramsey/uuid" />
       <excludeFolder url="file://$MODULE_DIR$/src/vendor/predis/predis" />
+      <excludeFolder url="file://$MODULE_DIR$/src/vendor/php-amqplib/php-amqplib" />
+      <excludeFolder url="file://$MODULE_DIR$/src/vendor/paragonie/constant_time_encoding" />
+      <excludeFolder url="file://$MODULE_DIR$/src/vendor/paragonie/random_compat" />
+      <excludeFolder url="file://$MODULE_DIR$/src/vendor/vladimir-yuldashev/laravel-queue-rabbitmq" />
+      <excludeFolder url="file://$MODULE_DIR$/src/vendor/phpseclib/phpseclib" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
