@@ -1,0 +1,12 @@
+{
+    "specific_author_campaign": {
+        "author_id": 1,
+        "order_product_quantity": 2
+    },
+    "domestic_author_campaign": {
+        "order_product_quantity": 1
+    },
+    "total_price_campaign": {
+        "total_price": 200
+    }
+}

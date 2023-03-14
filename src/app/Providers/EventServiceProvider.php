@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Jobs\createOrder;
 use App\Jobs\Testrabbit;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
@@ -30,6 +31,7 @@ class EventServiceProvider extends ServiceProvider
     public function boot()
     {
         App::bindMethod(Testrabbit::class."@handle",fn($job)=>$job->handle());
+        App::bindMethod(createOrder::class."@handle",fn($job)=>$job->handle());
     }
 
     /**

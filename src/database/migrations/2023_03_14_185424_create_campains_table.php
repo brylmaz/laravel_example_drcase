@@ -13,13 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('authors', function (Blueprint $table) {
+        Schema::create('campaigns', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->unique();
-            $table->enum('AuthorType',['Yerli','Yabancı']);
+            $table->string('name');
+            $table->string('type');
+            $table->json('rule');
+            $table->double('discount');
             $table->timestamps();
-            $table->enum('status',['active','passive'])->default('active');
-            $table->enum('deleted',['not_delete','deleted'])->default('not_delete');
         });
     }
 
@@ -30,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('authors');
+        Schema::dropIfExists('campains');
     }
 };

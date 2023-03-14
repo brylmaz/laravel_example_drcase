@@ -26,7 +26,8 @@ class AuthorTableSeeder extends Seeder
             else{
                 Author::query()->updateOrCreate([
                     'id' => $Author['author_id'],
-                    'name' =>$Author['author']
+                    'name' =>$Author['author'],
+                    'AuthorType'=>$Author['authorType'],
                 ]);
             }
 
