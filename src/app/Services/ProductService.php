@@ -17,7 +17,7 @@ class ProductService
     public static function CheckStock($data){
 
         foreach ($data as $key=>$value){
-            $stock = Product::find($value['product_id']);
+            $stock = Product::findByCache($value['product_id']);
             if ($stock->stock_quantity < $value['piece']){
                 throw new ProductStockException($value['product_id'].' product_id li ürün için stok yetersiz');
             }

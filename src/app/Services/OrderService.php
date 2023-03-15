@@ -16,17 +16,19 @@ class OrderService
         $this->product = $product;
     }
     public static function addOrder($data){
+
         $discountedOrder = CampaignFactory::make($data);
+
         $order = new Order();
         $order->order_number=$data['orderNumber'];
         $order->total_price = $discountedOrder['total_price'];
         $order->discount_amount = $discountedOrder['discount_amount'];
         $order->campain_info = $discountedOrder['campain_info'];
         $order->amount_to_be_paid = $discountedOrder['amount_to_be_paid'];
-        $order->user_id = $data['user_id'];
+        //$order->user_id = $data['user_id'];
         $order->save();
        foreach ($data['data'] as $key =>$orderProduct){
-                $product = Product::find($orderProduct['id']);
+                $product = Product::findByCache($orderProduct['product_id']);
                 $orderLine = new Orderline();
                 $orderLine->order_id = $order->id;
                 $orderLine->product_id  =$product->id;

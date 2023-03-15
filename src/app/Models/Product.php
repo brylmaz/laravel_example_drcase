@@ -33,4 +33,6 @@ class Product extends Model
         }
         return json_decode($product);
     }
+
+
 }
