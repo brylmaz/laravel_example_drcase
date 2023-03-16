@@ -45,10 +45,10 @@ daha sonra src/docker-compose.yml yolunda docker compose dosyası bulunmaktadır
 Proje ayağa kalktıktan sonra sırasıyla aşağıdaki kodları docker da çalışan main container cli na yazın.
 
 ```bash
-  php artisan migrate    // Veritabanı tabloları oluşturmak için
-
+  composer install
   
-
+  php artisan migrate    // Veritabanı tabloları oluşturmak için
+  
   php artisan db:seed   // Tabloları veriler ile doldurmak için
   
 ```
