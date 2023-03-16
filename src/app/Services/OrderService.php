@@ -9,6 +9,8 @@ use App\Models\Order;
 use App\Models\Orderline;
 use App\Models\Product;
 use App\Services\Campaign\CampaignFactory;
+use Exception;
+
 
 class OrderService
 {
@@ -42,11 +44,14 @@ class OrderService
     }
 
     public static function getOrder($data){
-
-
-        $orderInfo = Order::findByCache($data[0]['OrderNumber']);
-        $orderInfo = OrderResource::collection($orderInfo);
-        $orderInfo = json_decode($orderInfo->toJson(), true);
+        try {
+            $orderInfo = Order::findByCache($data[0]['OrderNumber']);
+            $orderInfo = OrderResource::collection($orderInfo);
+            $orderInfo = json_decode($orderInfo->toJson(), true);
+        }
+        catch (\Error $error) {
+            throw new Exception("Sipariş Getirilirken Hata Oluştu.");
+        }
 
         return $orderInfo;
     }

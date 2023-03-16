@@ -22,9 +22,6 @@ class OrderResource extends JsonResource
             "campain_info"=> $this->campain_info,
             "created_at"=> $this->created_at,
             "order_line" => OrderlineResource::collection($this->orderline),
-
-
-
         ];
     }
 }
