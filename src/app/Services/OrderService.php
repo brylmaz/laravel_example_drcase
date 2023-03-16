@@ -54,7 +54,7 @@ class OrderService
         try {
             $orderInfo = Order::findByCache($data[0]['OrderNumber']);
             $orderInfo = OrderResource::collection($orderInfo);
-            //$orderInfo = json_decode($orderInfo->toJson(), true);
+            $orderInfo = json_decode($orderInfo->toJson(), true);
         }
         catch (\Error $error) {
             throw new Exception("Sipariş Getirilirken Hata Oluştu.");
