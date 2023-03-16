@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class AuthorResource extends JsonResource
+class CampaignResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -12,12 +12,13 @@ class AuthorResource extends JsonResource
      * @param  \Illuminate\Http\Request  $request
      * @return array|\Illuminate\Contracts\Support\Arrayable|\JsonSerializable
      */
-    public function toArray($request)
+    public function toArray($request):array
     {
         return [
-            "id" => $this->id,
-            "name" => $this->name,
-            "type" => $this->AuthorType
+            'name'=>$this->name,
+            'type'=>$this->type,
+            'rule'=>$this->rule,
+            'discount'=>$this->discount
         ];
     }
 }

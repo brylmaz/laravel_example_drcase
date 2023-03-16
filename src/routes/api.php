@@ -1,16 +1,22 @@
 <?php
 
+use App\Http\Controllers\AuthorController;
+use App\Http\Controllers\CampaignController;
 use App\Http\Controllers\OrderController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('/v1')->group(function () {
     Route::post('/CreateOrder', [OrderController::class, 'CreateOrder']);
+    Route::post('/GetOrder', [OrderController::class, 'GetOrder']);
+
+    Route::get('/ListCampaign', [CampaignController::class, 'ListCampaign']);
+    Route::put('/EditCampaign', [CampaignController::class, 'EditCampaign']);
+
+    Route::get('/ListAuthor', [AuthorController::class, 'ListAuthor']);
 });
 
-Route::prefix('/v1')->group(function () {
-    Route::post('/GetOrder', [OrderController::class, 'GetOrder']);
-});
+
 Route::fallback(function () {
     $response = [
       'success' => false,

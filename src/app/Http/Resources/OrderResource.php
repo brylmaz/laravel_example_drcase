@@ -12,7 +12,7 @@ class OrderResource extends JsonResource
      * @param  \Illuminate\Http\Request  $request
      * @return array|\Illuminate\Contracts\Support\Arrayable|\JsonSerializable
      */
-    public function toArray($request)
+    public function toArray($request):array
     {
         return [
             "order_number" => $this->order_number,

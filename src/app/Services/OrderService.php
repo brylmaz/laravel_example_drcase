@@ -14,10 +14,10 @@ use Exception;
 
 class OrderService
 {
-    protected $product;
-    public function __construct(Product $product)
+    protected $order;
+    public function __construct(Order $order)
     {
-        $this->product = $product;
+        $this->order = $order;
     }
     public static function addOrder($data){
 
@@ -47,7 +47,7 @@ class OrderService
         try {
             $orderInfo = Order::findByCache($data[0]['OrderNumber']);
             $orderInfo = OrderResource::collection($orderInfo);
-            $orderInfo = json_decode($orderInfo->toJson(), true);
+            //$orderInfo = json_decode($orderInfo->toJson(), true);
         }
         catch (\Error $error) {
             throw new Exception("Sipariş Getirilirken Hata Oluştu.");

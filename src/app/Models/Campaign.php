@@ -15,9 +15,9 @@ class Campaign extends Model
     public static function allByCache(){
         $campaigns = Cache::get('campaigns');
         if ($campaigns == null){
-            $campaigns = Campaign::all();
-            Cache::put('campaigns',json_encode($campaigns));
-            return $campaigns;
+            $c = Campaign::all();
+            Cache::put('campaigns',json_encode($c));
+            return $c;
         }
         return json_decode($campaigns);
     }
