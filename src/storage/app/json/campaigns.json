@@ -1,0 +1,30 @@
+{
+    "SpecificAuthorCampaign": {
+        "json": {
+            "author_id": 3,
+            "order_product_quantity": 2
+        },
+        "name": "Sabahattin Ali'nin Romanlarında İndirim 2 Alana Bir Bedava",
+        "discount": 1
+    },
+    "DomesticAuthorCampaign": {
+        "json": {
+            "authorType": "Yerli"
+        },
+        "name": "Yerli Yazar Kitaplarında %5 indirim",
+        "discount": 5
+    },
+    "TotalPriceCampaign": {
+        "json": {
+            "total_price": 200
+        },
+        "name": "200 TL ve üzeri alışverişlerde sipariş toplamına %5 indirim",
+        "discount": 5
+    }
+}
+
+
+
+
+
+
