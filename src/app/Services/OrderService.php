@@ -10,6 +10,7 @@ use App\Models\Orderline;
 use App\Models\Product;
 use App\Services\Campaign\CampaignFactory;
 use Exception;
+use Illuminate\Support\Facades\Cache;
 
 
 class OrderService
@@ -39,6 +40,12 @@ class OrderService
                 $orderLine->price  =$product->list_price;
                 $orderLine->piece  =$orderProduct['piece'];
                 $orderLine->save();
+
+
+                    $lastProduct = Product::where('id',$product->id)
+                        ->update([
+                       "stock_quantity" => ($product->stock_quantity - $orderProduct['piece'])
+               ]);
         }
 
     }
@@ -55,5 +62,7 @@ class OrderService
 
         return $orderInfo;
     }
+
+
 
 }

@@ -3,6 +3,7 @@
 namespace App\Observers;
 
 use App\Models\Orderline;
+use Illuminate\Support\Facades\Cache;
 
 class OrderlineObserver
 {

@@ -3,6 +3,7 @@
 namespace App\Observers;
 
 use App\Models\Campaign;
+use Illuminate\Support\Facades\Cache;
 
 class CampaignObserver
 {

@@ -3,6 +3,7 @@
 namespace App\Observers;
 
 use App\Models\Author;
+use Illuminate\Support\Facades\Cache;
 
 class AuthorObserver
 {
