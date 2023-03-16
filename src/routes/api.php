@@ -5,7 +5,11 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('/v1')->group(function () {
-    Route::post('/CreateOrder', [OrderController::class, 'index']);
+    Route::post('/CreateOrder', [OrderController::class, 'CreateOrder']);
+});
+
+Route::prefix('/v1')->group(function () {
+    Route::post('/GetOrder', [OrderController::class, 'GetOrder']);
 });
 Route::fallback(function () {
     $response = [

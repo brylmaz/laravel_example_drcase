@@ -2,7 +2,9 @@
 
 namespace App\Services\Campaign;
 
+use App\Exceptions\CampaignCalculateException;
 use App\Models\Campaign;
+use mysql_xdevapi\Exception;
 
 class CampaignFactory
 {
@@ -11,15 +13,15 @@ class CampaignFactory
         $discountedOrder = [];
         $tempOrder = [];
         foreach ($campaigns as $campaign){
-            $class = '\App\Services\Campaign\Campaigns\\'.$campaign->type;
-            $campaignObject = new $class();
-            $tempOrder = $campaignObject->calculate($products,$campaign);
-//            try {
-//
-//
-//            }catch (\Error $error){
-//                continue;
-//            }
+
+            try {
+                $class = '\App\Services\Campaign\Campaigns\\'.$campaign->type;
+                $campaignObject = new $class();
+                $tempOrder = $campaignObject->calculate($products,$campaign);
+            }catch (\Error $error){
+                throw new CampaignCalculateException("Kampanya Hesaplanırken hata oluştu.");
+            }
+
             if(empty($discountedOrder)){
                 $discountedOrder = $tempOrder;
             }

@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Facades\Cache;
 
 class Order extends Model
 {
@@ -16,6 +17,18 @@ class Order extends Model
 
     public function orderline(): HasMany
     {
-        return $this->HasMany(Orderline::class,'order_id','id');
+        return $this->HasMany(Orderline::class,'order_id','id')->with('product');
+    }
+
+    public static function findByCache($orderNumber){
+        $order = Cache::get('OrderNumber_'.$orderNumber);
+        if ($order == null){
+            $o = Order::with('orderline')->where('order_number',$orderNumber)->get()->toArray();
+            Cache::put('OrderNumber_'.$orderNumber,json_encode($o));
+
+            return $o;
+        }
+
+        return json_decode($order);
     }
 }

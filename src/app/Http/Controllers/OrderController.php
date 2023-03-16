@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\OrderCreateRequest;
+use App\Http\Requests\GetOrderRequest;
 use App\Jobs\createOrder;
+use App\Models\Order;
 use App\Services\Campaign\CampaignFactory;
 use App\Services\OrderService;
 use App\Services\ProductService;
@@ -16,7 +18,7 @@ class OrderController extends Controller
      * @param Request $request
      * @return void
      */
-    public function index(OrderCreateRequest $request){
+    public function CreateOrder(OrderCreateRequest $request){
 
         ProductService::CheckStock($request->all());
 
@@ -27,9 +29,24 @@ class OrderController extends Controller
             'orderNumber' => $orderNumber,
             'data' => $request->all()
         );
-        //OrderService::addOrder($data);
+
         createOrder::dispatch($data);
-        //Artisan::call('queue:work --queue=high,createOrder');
+
         return response()->json(['success' => 'TRUE', 'Sipariş Numarası' => $orderNumber,'message'=>'Siparişiniz işleme alınmıştır.']);
+    }
+
+    /**
+     * @param GetOrderRequest $request
+     * @return void
+     */
+    public function GetOrder(GetOrderRequest $request){
+        $getOrder=OrderService::getOrder($request->all());
+        if (empty($getOrder)){
+            return response()->json(['success' => 'FALSE', 'message'=>'Bu Sipariş Numarası ile bir kayıt bulunamadı.','data' => $getOrder,]);
+        }
+        else{
+            return response()->json(['success' => 'TRUE', 'message'=>' Sipariş Bilgileri Listelenmiştir.','data' => $getOrder,]);
+        }
+
     }
 }

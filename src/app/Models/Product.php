@@ -24,6 +24,7 @@ class Product extends Model
         return $this->belongsTo(Author::class,'author_id','id');
     }
 
+
     public static function findByCache($id){
         $product = Cache::get('product_id_'.$id);
         if ($product == null){

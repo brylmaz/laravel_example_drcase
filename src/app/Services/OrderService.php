@@ -3,6 +3,8 @@ namespace App\Services;
 
 
 
+
+use App\Http\Resources\OrderResource;
 use App\Models\Order;
 use App\Models\Orderline;
 use App\Models\Product;
@@ -37,6 +39,16 @@ class OrderService
                 $orderLine->save();
         }
 
+    }
+
+    public static function getOrder($data){
+
+
+        $orderInfo = Order::findByCache($data[0]['OrderNumber']);
+        $orderInfo = OrderResource::collection($orderInfo);
+        $orderInfo = json_decode($orderInfo->toJson(), true);
+
+        return $orderInfo;
     }
 
 }
