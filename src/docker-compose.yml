@@ -63,6 +63,14 @@ services:
         volumes:
             - "./redis:/data"
 
+    compose:
+        image: composer
+        volumes:
+            - .:/app
+        command:
+            -   install
+
+
     rabbitmq3:
         image: rabbitmq:3-management-alpine
         container_name: 'rabbitmq3'
