@@ -11,8 +11,8 @@ class TotalPriceCampaign
 
         $total_price = 0;
         $discount_amount = 0;
-        $campain_info = "200 TL ve üzeri alışverişlerde sipariş toplamına %5 indirim";
-        $amount_to_be_paid = 0;
+
+
 
         $rule = json_decode($campaign->rule,true);
         foreach ($products['data'] as $orderProduct){
@@ -28,7 +28,7 @@ class TotalPriceCampaign
         $response = array(
             'total_price' => $total_price,
             'discount_amount' => $discount_amount,
-            'campain_info' => $campain_info,
+            'campain_info' => $campaign->name,
             'amount_to_be_paid' => $amount_to_be_paid
         );
 

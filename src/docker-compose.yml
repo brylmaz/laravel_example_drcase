@@ -12,7 +12,7 @@ services:
             - ../src:/var/www
             - ../nginx/conf.d/:/etc/nginx/conf.d/
         depends_on:
-            - app
+
             - db
             - rabbitmq3
             - redis
@@ -38,9 +38,12 @@ services:
             dockerfile: Dockerfile
         volumes:
             - ../src:/var/www
+        user: 'www-data:www-data'
         ports:
             - "9000:9000"
         working_dir: /var/www
+        depends_on:
+            - nginx
 
 
     phpmyadmin:

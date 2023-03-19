@@ -11,8 +11,8 @@ class DomesticAuthorCampaign
 
         $total_price = 0;
         $discount_amount = 0;
-        $campain_info = "Yerli Yazar Kitaplarında %5 indirim";
-        $amount_to_be_paid = 0;
+
+
 
         $rule = json_decode($campaign->rule,true);
         foreach ($products['data'] as $orderProduct){
@@ -30,7 +30,7 @@ class DomesticAuthorCampaign
         $response = array(
             'total_price' => $total_price,
             'discount_amount' => $discount_amount,
-            'campain_info' => $campain_info,
+            'campain_info' => $campaign->name,
             'amount_to_be_paid' => $amount_to_be_paid
         );
 

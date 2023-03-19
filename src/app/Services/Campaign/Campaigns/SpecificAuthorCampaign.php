@@ -12,8 +12,7 @@ class SpecificAuthorCampaign
         $total_price = 0;
         $lastPrice = array();
         $discount_amount = 0;
-        $campain_info = "Sabahattin Ali'nin Romanlarında İndirim";
-        $amount_to_be_paid = 0;
+
 
         $rule = json_decode($campaign->rule,true);
         foreach ($products['data'] as $orderProduct){
@@ -35,23 +34,27 @@ class SpecificAuthorCampaign
             $total_price += ($product->list_price * $orderProduct['piece']);
 
         }
-        rsort($lastPrice);
 
-        foreach ($lastPrice as $key  => $value){
-            if($key == $campaign->discount)
-            {
-                break;
+        if(!empty($lastPrice)){
+            rsort($lastPrice);
+
+            foreach ($lastPrice as $key  => $value){
+                if($key == $campaign->discount)
+                {
+                    break;
+                }
+
+                $discount_amount += $value;
             }
-
-            $discount_amount += $value;
         }
+
 
         $amount_to_be_paid = $total_price - $discount_amount;
 
         $response = array(
             'total_price' => $total_price,
             'discount_amount' => $discount_amount,
-            'campain_info' => $campain_info,
+            'campain_info' => $campaign->name,
             'amount_to_be_paid' => $amount_to_be_paid,
         );
 

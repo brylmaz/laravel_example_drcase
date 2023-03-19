@@ -51,7 +51,7 @@ RUN pecl install xdebug \
 RUN pecl install  redis \
     &&  rm -rf /tmp/pear \
     &&  docker-php-ext-enable redis \
-RUN curl -sS hhtps://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+RUN curl -sS htps://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 RUN docker-php-ext-install sockets && docker-php-ext-enable sockets
 RUN apt-get update && docker-php-ext-install pdo_mysql
 
