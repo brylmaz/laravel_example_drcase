@@ -38,10 +38,11 @@ services:
             dockerfile: Dockerfile
         volumes:
             - ../src:/var/www
+            - ../logs:/var/www/storage/logs
         ports:
             - "9000:9000"
         working_dir: /var/www
-    
+
 
 
     phpmyadmin:

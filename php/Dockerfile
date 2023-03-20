@@ -55,5 +55,9 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 RUN docker-php-ext-install sockets && docker-php-ext-enable sockets
 RUN apt-get update && docker-php-ext-install pdo_mysql
 
+RUN mkdir -p storage/logs
+RUN touch storage/logs/laravel.log
+RUN chmod -R 777 storage/logs
+
 COPY --from=composer:2.5.4 /usr/bin/composer /usr/bin/composer
 
