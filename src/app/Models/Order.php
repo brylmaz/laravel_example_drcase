@@ -23,7 +23,7 @@ class Order extends Model
     public static function findByCache($orderNumber){
         $order = Cache::get('OrderNumber_'.$orderNumber);
         if ($order == null){
-            $o = Order::with('orderline')->where('order_number',$orderNumber)->get()->toArray();
+            $o = Order::with('orderline')->where('order_number',$orderNumber)->get();
             Cache::put('OrderNumber_'.$orderNumber,json_encode($o));
 
             return $o;
