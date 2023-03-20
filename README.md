@@ -42,10 +42,10 @@ daha sonra src/docker-compose.yml yolunda docker compose dosyası bulunmaktadır
   
 ```
 
-Proje ayağa kalktıktan sonra sırasıyla aşağıdaki kodları docker da çalışan main container cli na yazın.
+Proje ayağa kalktıktan sonra sırasıyla aşağıdaki kodları docker da çalışan main container cli (drcase container terminali) na yazın.
 
 ```bash
-  composer install
+  composer install  // çok fazla yükleme yaptığı için bazı paketler yüklemede hata veriyor o yüzden bu kodu hata verirse tekrar çalıştırmanız gerekebilir.
   
   php artisan migrate    // Veritabanı tabloları oluşturmak için
   
@@ -53,7 +53,7 @@ Proje ayağa kalktıktan sonra sırasıyla aşağıdaki kodları docker da çal�
   
 ```
 
-Bu projede rabbitmq kullanıyorum. çok araştırmama rağmen kuyruğu otomatik çalıştırmadım. Bu yüzden manuel kuyruğu çalıştırmamız gerekecek.
+Bu projede rabbitmq kullanıyorum. çok araştırmama rağmen kuyruğu otomatik çalıştıramadım. Bu yüzden manuel kuyruğu çalıştırmamız gerekecek.
 
 ```bash
   php artisan queue:work --queue=createOrder   
@@ -74,7 +74,7 @@ Bu linki postman de import butonuna tıklayıp link sekmesine yapıştırıp dah
 
 ### Sipariş Oluştur (CreateOrder)
 
-Burada sipariş oluşturabiliyoruz. Gönderdiğiniz ürünlerden herhangibiri stok durumu yetersiz se sipariş oluşturulmaz. Sipariş oluşturulma başarılı olursa O ürünlerin stok larından düşecektir.
+Burada sipariş oluşturabiliyoruz. Gönderdiğiniz ürünlerden herhangibiri stok durumu yetersiz se sipariş oluşturulmaz. Sipariş oluşturulma başarılı olursa O ürünlerin stoklarından düşecektir.
 
 #### Endpoint
 ```http
@@ -162,7 +162,7 @@ Siparişinizle ilgili kampanya bilgileri ödeme tutarı satın alınan ürünler
                     "product": {
                         "title": "Kuyucaklı Yusuf",
                         "list_price": "10.40",
-                        "stock_quantity": -2,
+                        "stock_quantity": 2,
                         "CategoryName": "Roman",
                         "AuthorName": "Sabahattin Ali",
                         "AuthorType": "Yerli"
